@@ -7,14 +7,14 @@ public class Main {
 
 		System.out.println(gumballMachine);
 
-		gumballMachine.insertQuarter();
+		gumballMachine.insertQuarter(new Coins(25) );//One quarter
 		gumballMachine.turnCrank();
 
 		System.out.println(gumballMachine);
 
-		gumballMachine.insertQuarter();
+		gumballMachine.insertQuarter(new Coins(25, 25));//Two quarters
 		gumballMachine.turnCrank();
-		gumballMachine.insertQuarter();
+		gumballMachine.insertQuarter(new Coins(3, 1, 25));//3 nickles, 1 dime, 1 quarter
 		gumballMachine.turnCrank();
 
 		System.out.println(gumballMachine);

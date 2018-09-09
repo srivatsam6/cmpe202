@@ -6,6 +6,9 @@ public class GumballMachine {
 	State noQuarterState;
 	State hasQuarterState;
 	State soldState;
+	
+	enum GumballMachineType {TYPEA, TYPEB, TYPEC}
+    private GumballMachineType machineType;
  
 	State state = soldOutState;
 	int count = 0;
@@ -22,7 +25,7 @@ public class GumballMachine {
 		} 
 	}
  
-	public void insertQuarter() {
+	public void insertQuarter(Coins coin) {
 		state.insertQuarter();
 	}
  
@@ -87,4 +90,24 @@ public class GumballMachine {
 		result.append("Machine is " + state + "\n");
 		return result.toString();
 	}
+	
+	public boolean isValidQuarter(Coins coin)
+	{
+		setMachineType(coin);
+		boolean isValidQuarter = false;
+		if (( coin.getTotal() == 25 & machineType == GumballMachineType.TYPEA) ||
+		        ( coin.getTotal() == 50 & (machineType == GumballMachineType.TYPEB || machineType == GumballMachineType.TYPEC)))
+			isValidQuarter =  true;
+		return isValidQuarter;
+	}
+	
+	public void setMachineType(Coins coin)
+    {
+    	if(coin.getInsert_quarter()>0)
+        	machineType = GumballMachineType.TYPEA;
+        else if(coin.getInsert_firstQuarter()>0 || coin.getInsert_secondQuarter()>0)
+        	machineType = GumballMachineType.TYPEB;
+        else
+        	machineType = GumballMachineType.TYPEC;
+    }
 }
