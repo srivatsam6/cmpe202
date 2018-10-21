@@ -1,6 +1,6 @@
 public class Cheese extends LeafDecorator
 {
-    private String[] options ;
+    protected String[] options ;
     
     
     public Cheese( String d )

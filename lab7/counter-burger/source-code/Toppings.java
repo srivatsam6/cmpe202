@@ -1,6 +1,6 @@
 public class Toppings extends LeafDecorator
 {
-    private String[] options ;
+    protected String[] options ;
     
     
     public Toppings( String d )
@@ -12,8 +12,8 @@ public class Toppings extends LeafDecorator
     public void setOptions( String[] options )
     {
         this.options = options ;
-        if ( options.length > 4 )
-            this.price += (options.length-4) * 0.75 ;
+//        if ( options.length > 4 )
+//            this.price += (options.length-4) * 0.75 ;
     }
     
     public String getDescription() 

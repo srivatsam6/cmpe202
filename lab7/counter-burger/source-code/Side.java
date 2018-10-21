@@ -1,19 +1,21 @@
-public class Sauce extends LeafDecorator
-{
-    private String[] options ;
+import java.util.Arrays;
+
+public class Side extends LeafDecorator {
+
+    protected String[] options ;
     
     
-    public Sauce( String d )
+    public Side( String d )
     {
         super(d) ;
     }
     
-    // 1 sauce free, extra +.5
+    // 1 cheese free, extra cheese +1.00
     public void setOptions( String[] options )
     {
         this.options = options ;
-        if ( options.length > 1 )
-            this.price += (options.length-1) * 0.5 ;
+        if(Arrays.asList(options).contains("No Side")) this.price=0.0;
+        else this.price += 3.00 ;
     }
     
     public String getDescription() 
@@ -26,5 +28,5 @@ public class Sauce extends LeafDecorator
         }        
         return desc ;
     }
-    
+
 }
